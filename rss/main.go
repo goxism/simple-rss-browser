@@ -66,41 +66,38 @@ func main() {
 	const infoCommandName = "info"
 	cli.AppHelpTemplate = apphelptmpl
 	cli.CommandHelpTemplate = cmdhelptmpl
-	app := &cli.App{
-		Action: cli.ShowAppHelp,
-		Author: "Craig Weber",
-		Commands: []cli.Command{
-			cli.Command{
-				Name:        infoCommandName,
-				ShortName:   "in",
-				Description: "Fetch basic feed info",
-				Action:      infoCommand,
-				Usage:       os.Args[0] + " " + infoCommandName + " <feed-url>",
-			},
-			cli.Command{
-				Name:        episodesCommandName,
-				ShortName:   "ep",
-				Description: "Print episode details",
-				Action:      episodesCommand,
-				Usage:       os.Args[0] + " " + episodesCommandName + " <feed-url>",
-				// BashComplete
-				// Before
-				// Flags
-				// SkipFlagParsing
-				// Subcommands
-			},
+
+	app := cli.NewApp()
+	app.Action = cli.ShowAppHelp
+	app.Author = "Craig Weber"
+	app.Commands = []cli.Command{
+		cli.Command{
+			Name:        infoCommandName,
+			ShortName:   "in",
+			Description: "Fetch basic feed info",
+			Action:      infoCommand,
+			Usage:       os.Args[0] + " " + infoCommandName + " <feed-url>",
 		},
-		Email: "weberc2@gmail.com",
-		Name:  "rss - a simple command-line rss browser",
-		Usage: "rss <feed-url>",
-		// BashComplete
-		// Before
-		// CommandNotFound
-		// Compiled
-		// EnableBashCompletion
-		// Flags
-		// Version
+		cli.Command{
+			Name:        episodesCommandName,
+			ShortName:   "ep",
+			Description: "Print episode details",
+			Action:      episodesCommand,
+			Usage:       os.Args[0] + " " + episodesCommandName + " <feed-url>",
+			// BashComplete
+			// Before
+			// Flags
+			// SkipFlagParsing
+			// Subcommands
+		},
 	}
+	// BashComplete
+	// Before
+	// CommandNotFound
+	// Compiled
+	// EnableBashCompletion
+	// Flags
+	// Version
 
 	if err := app.Run(os.Args); err != nil {
 		fmt.Fprintln(os.Stderr, err)
