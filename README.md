@@ -4,10 +4,12 @@ README
 This repository defines a simple command (`rss`) for browsing podcasts. It's powered entirely by https://github.com/SlyMarbo/rss, and it is written in Go.
 
 ##USAGE
-`rss <feed-url>`
+* Get feed info: `rss info <feed-url>`
+* List feed's episodes: `rss episodes <feed-url>`
+* Help: `rss help <feed-url>`
 
 ```
-$ rss http://blog.stackoverflow.com/feed/
+$ rss info http://blog.stackoverflow.com/feed/
 Title:       Blog - Stack Exchange
 Episodes:    40
 Link:        http://blog.stackoverflow.com
