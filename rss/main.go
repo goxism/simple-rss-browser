@@ -19,11 +19,21 @@ func infoCommand(c *cli.Context) {
 		os.Exit(1)
 	}
 
-	fmt.Println("Title:      ", feed.Title)
-	fmt.Println("NickName:   ", feed.Nickname)
-	fmt.Println("Link:       ", feed.Link)
-	fmt.Println("Episodes:   ", len(feed.Items))
-	fmt.Println("Description:", feed.Description)
+	if feed.Title != "" {
+		fmt.Println("Title:      ", feed.Title)
+	}
+	if feed.Nickname != "" {
+		fmt.Println("NickName:   ", feed.Nickname)
+	}
+	if feed.Link != "" {
+		fmt.Println("Link:       ", feed.Link)
+	}
+	if feed.Items != nil {
+		fmt.Println("Episodes:   ", len(feed.Items))
+	}
+	if feed.Description != "" {
+		fmt.Println("Description:", feed.Description)
+	}
 }
 
 func episodesCommand(c *cli.Context) {
